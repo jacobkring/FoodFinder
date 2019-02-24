@@ -7,6 +7,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 
 // Styles
 import styles from './Styles/RootContainerStyles'
+import FoodAppBarTop from "./CategoryContainer";
 
 class RootContainer extends Component {
   componentDidMount () {

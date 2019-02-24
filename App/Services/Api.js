@@ -1,8 +1,10 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce'
+import Secrets from 'react-native-config'
+
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   // ------
   // STEP 1
   // ------
@@ -14,7 +16,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     baseURL,
     // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'user-key': Secrets.ZOMATO_API_KEY
     },
     // 10 second timeout...
     timeout: 10000
@@ -35,8 +38,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   // way at this level.
   //
   const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getCategories = () => api.get('categories')
 
   // ------
   // STEP 3
@@ -53,8 +55,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   return {
     // a list of the API functions from step 2
     getRoot,
-    getRate,
-    getUser
+    getCategories
   }
 }
 
