@@ -17,6 +17,7 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
+
 class App extends Component {
   render () {
     return (
@@ -31,3 +32,4 @@ class App extends Component {
 export default DebugConfig.useReactotron
   ? console.tron.overlay(App)
   : App
+
