@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+// Add Actions
+import ZomatoActions from "../Redux/ZomatoRedux";
+
+import { TextInput } from 'react-native-paper';
 
 // Styles
 import styles from './Styles/RestaurantListStyle'
 import LogoTitle from "../Components/LogoTitle";
 import CitySelector from "../Components/CitySelector";
-import ZomatoActions from "../Redux/ZomatoRedux";
 import RestaurantCard from "../Components/RestaurantCard";
 
 class RestaurantList extends Component {
+  state = {
+    text: ''
+  };
   static navigationOptions = ({ navigation }) => {
     const { state } = navigation;
     if(state.params != undefined){
@@ -45,8 +49,9 @@ class RestaurantList extends Component {
     console.log(this.props.restaurants)
     return (
       <ScrollView style={styles.container}>
-        { this.props.restaurants && this.props.restaurants.map(restaurant => {
-          return <RestaurantCard restaurant={restaurant} />
+        <TextInput style={{ color: "rgb(227,93,93)", margin: 5 }} underlineColor="rgb(227,93,93)" label={'Search'} value={this.state.text} onChangeText={text => this.setState({ text })}/>
+        { this.props.restaurants && this.props.restaurants.filter(restaurant => this.state.text.length > 1 ? restaurant.restaurant.name.toLowerCase().indexOf(this.state.text.toLowerCase()) !== -1 : true).map(restaurant => {
+          return <RestaurantCard key={restaurant.restaurant.deeplink} restaurant={restaurant} />
         })}
       </ScrollView>
     )
