@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-import ZomatoActions from '../Redux/ZomatoRedux';
 
+// Add Actions
+import ZomatoActions from '../Redux/ZomatoRedux';
 
 // Styles
 import styles from './Styles/CategoryContainerStyle'
@@ -12,29 +12,35 @@ import CitySelector from "../Components/CitySelector";
 import CategoryCard from "../Components/CategoryCard";
 
 class CategoryContainer extends Component {
-  static navigationOptions = ({ navigation}) => {
-    const {state} = navigation;
+  static navigationOptions = ({ navigation }) => {
+    const { state } = navigation;
     if(state.params != undefined){
       return {
         headerTitle: <LogoTitle />,
         headerMode: 'card',
-        headerRight: <CitySelector selectedCity={state.params.selectedCity}/>
+        headerRight: <CitySelector selectedCity={state.params.selectedCity} onCitySelected={(city) => state.params.setCity(city)}/>
+      }
+    } else {
+      return {
+        headerTitle: <LogoTitle />,
+        headerMode: 'card',
+        headerRight: <CitySelector/>
       }
     }
   };
 
   componentDidMount(){
-    this.props.navigation.setParams({ selectedCity: this.props.selectedCity })
+    if (this.props.navigation) this.props.navigation.setParams({ selectedCity: this.props.city, setCity: this.props.setCity });
     this.props.getCategories()
   }
 
   render () {
-    const { categories } = this.props;
+    const { categories, city } = this.props;
     return (
       <ScrollView style={styles.container}>
         {categories && categories.map( category => {
           const { id, name } = category.categories;
-          return <CategoryCard onClick={() => this.props.navigation.navigate()} category={name} />
+          return <CategoryCard key={id} onPress={() => this.props.navigation.navigate('RestaurantList', { category: name, id: id })} category={name} />
         })}
 
       </ScrollView>
@@ -43,16 +49,17 @@ class CategoryContainer extends Component {
 }
 
 const mapStateToProps = ({ zomato }) => {
-  const { categories } = zomato;
+  const { categories, city } = zomato;
   return {
-    categories
+    categories, city
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCategories: () => dispatch(ZomatoActions.categoryFetchRequest())
+    getCategories: () => dispatch(ZomatoActions.categoryFetchRequest()),
+    setCity: (newCity) => dispatch(ZomatoActions.setCity(newCity))
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)

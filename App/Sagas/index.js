@@ -5,15 +5,15 @@ import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
 
-import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
+
 import { ZomatoTypes } from '../Redux/ZomatoRedux'
 
 /* ------------- Sagas ------------- */
 
-import { startup } from './StartupSagas'
-import { getUserAvatar } from './GithubSagas'
+
 import { getRestaurantCategories } from './ZomatoSagas'
+import { setCity } from './ZomatoSagas'
+import { getRestaurants } from './ZomatoSagas'
 
 /* ------------- API ------------- */
 
@@ -25,12 +25,8 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 export default function * root () {
   yield all([
-    // some sagas only receive an action
-    takeLatest(StartupTypes.STARTUP, startup),
-
-    // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-
-    takeLatest(ZomatoTypes.CATEGORY_FETCH_REQUEST, getRestaurantCategories, api)
+    takeLatest(ZomatoTypes.CATEGORY_FETCH_REQUEST, getRestaurantCategories, api),
+    takeLatest(ZomatoTypes.SET_CITY, setCity),
+    takeLatest(ZomatoTypes.RESTAURANT_FETCH_REQUEST, getRestaurants, api)
   ])
 }

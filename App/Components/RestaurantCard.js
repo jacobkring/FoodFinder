@@ -22,6 +22,8 @@ ExamplesRegistry.addComponentExample('Rounded Button', () =>
   />
 )
 
+const price_range = ['$', '$$', '$$$', '$$$$', '$$$$$'];
+
 export default class RestaurantCard extends Component {
   static propTypes = {
     onPress: PropTypes.func,
@@ -29,27 +31,31 @@ export default class RestaurantCard extends Component {
     cuisine: PropTypes.string,
     cost: PropTypes.string,
     imgUri: PropTypes.string,
-    rating: PropTypes.number
+    rating: PropTypes.number,
+    restaurant: PropTypes.object
   };
 
   render () {
+    const { restaurant } = this.props.restaurant;
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.onPress}>
-        <Card>
+        <Card style={styles.cardContent}>
           <View style={styles.contentContainer}>
             <Image
-              style={{width: 50, height: 50}}
-              source={{uri: 'https://picsum.photos/700'}}
+              style={{width: 65, height: 65 }}
+              source={{uri: restaurant.thumb}}
             />
             <View style={styles.restaurantInformationContainer}>
-              <Text style={styles.restaurantNameText}>{this.props.name}</Text>
+              <Text style={styles.restaurantNameText}>{restaurant.name}</Text>
               <View style={styles.costRatingsContainer}>
-                <Text style={styles.cuisineText}>{this.props.cost}</Text>
-                <StarRating rating={this.props.rating}/>
+                <StarRating rating={restaurant.user_rating.aggregate_rating}/>
+                <Text style={styles.cuisineText}>{restaurant.user_rating.rating_text} </Text>
+                <Text style={styles.cuisineText}>{price_range[restaurant.price_range]}</Text>
               </View>
-              <Text style={styles.cuisineText}>{this.props.cuisine}</Text>
+              <Text style={styles.cuisineText}>{restaurant.cuisines}</Text>
             </View>
           </View>
+          <Text style={styles.cuisineText}>{restaurant.location.address}</Text>
         </Card>
       </TouchableOpacity>
     )

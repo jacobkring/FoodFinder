@@ -2,6 +2,16 @@
 import apisauce from 'apisauce'
 import Secrets from 'react-native-config'
 
+const city_coords = {
+  Pittsburgh: {
+    lat:  40.44083,
+    lon: -79.995613
+  },
+  'New York':{
+    lat: 40.71463,
+    lon: -74.005806
+  }
+};
 
 // our "constructor"
 const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
@@ -37,8 +47,14 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getCategories = () => api.get('categories')
+  const getRoot = () => api.get('');
+  const getCategories = () => api.get('categories');
+  const getRestaurants = (args) => {
+    let city = args[0];
+    let category = args[1];
+    return api.get('/search', { category: category, lat: city_coords[city].lat, lon: city_coords[city].lon, count: 20 });
+  }
+
 
   // ------
   // STEP 3
@@ -55,7 +71,8 @@ const create = (baseURL = 'https://developers.zomato.com/api/v2.1/') => {
   return {
     // a list of the API functions from step 2
     getRoot,
-    getCategories
+    getCategories,
+    getRestaurants
   }
 }
 

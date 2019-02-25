@@ -25,10 +25,12 @@ export default class LaunchScreen extends Component {
               color="rgb(227,93,93)"
               icon="view-list"
               mode="contained"
+              dark={true}
               style={styles.buttonStyle}>
               Goto Restaurant Categories
             </Button>
             <Button
+              dark={true}
               onPress={() => this.props.navigation.navigate('StorybookContainer')}
               color="rgb(227,93,93)"
               icon="book"

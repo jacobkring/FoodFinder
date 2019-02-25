@@ -3,13 +3,16 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    margin: 10
+    marginBottom: 10,
+  },
+  cardContent:{
+    padding: 5,
   },
   contentContainer:{
     flexDirection: 'row',
-    padding: 5
   },
   restaurantInformationContainer:{
+    flex: 1,
     marginLeft: 5
   },
   restaurantNameText:{
@@ -20,7 +23,10 @@ export default StyleSheet.create({
     fontSize: 12
   },
   costRatingsContainer:{
+    flex: 1,
+    margin: 0,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }
 })

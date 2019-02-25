@@ -37,7 +37,6 @@ export default class StarRating extends Component {
         <Icon style={{ color: rating >= 2.5 ? '#ffd700' : 'rgb(215,215,215)'}} name={rating >= 3 ? "star" : rating === 2.5 ? "star-half-o" : "star-o"}/>
         <Icon style={{ color: rating >= 3.5 ? '#ffd700' : 'rgb(215,215,215)'}} name={rating >= 4 ? "star" : rating === 3.5 ? "star-half-o" : "star-o"}/>
         <Icon style={{ color: rating >= 4.5 ? '#ffd700' : 'rgb(215,215,215)'}} name={rating >= 5 ? "star" : rating === 4.5 ? "star-half-o" : "star-o"}/>
-        <Text style={styles.ratingText}>{rating}</Text>
       </View>
     )
   }

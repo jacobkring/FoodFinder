@@ -8,11 +8,11 @@ import { Dropdown } from 'react-native-material-dropdown';
 export default class CitySelector extends Component {
   state = {
     visible: false,
-    selectedCity: 'New York'
   };
 
   render () {
     const { visible } = this.state;
+
     const cities = [
       { value: 'New York'},
       { value: 'Pittsburgh'}
@@ -21,10 +21,11 @@ export default class CitySelector extends Component {
     return (
       <View style={styles.selectorStyle}>
         <Dropdown
+          dropdownPosition={0}
           fontSize={12}
-          value={this.props.selectedCity ?  this.props.selectedCity : this.state.selectedCity}
+          value={this.props.selectedCity}
           label='Select a city'
-          onChangeText={(text) => this.props.onCitySelected ? this.props.onCitySelected(text) : this.setState({ selectedCity: text})}
+          onChangeText={this.props.onCitySelected}
           data={cities}
         />
       </View>

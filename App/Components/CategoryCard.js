@@ -19,7 +19,7 @@ export default class CategoryCard extends Component {
 
   render () {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.props.onPress}>
         <Card style={styles.container}>
           <Card.Content>
             <Title style={styles.titleStyle}>{this.props.category}</Title>

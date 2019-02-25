@@ -6,7 +6,10 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   categoryFetchRequest: null,
   categoryFetchSuccess: ['categories'],
-  categoryFetchFailure: null
+  categoryFetchFailure: null,
+  setCity: ['city'],
+  restaurantFetchRequest: ['city', 'category'],
+  restaurantFetchSuccess: ['restaurants']
 })
 
 export const ZomatoTypes = Types
@@ -17,8 +20,9 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   fetching: null,
   categories: null,
-  city: null,
-  category: null
+  city: "New York",
+  category: null,
+  restaurants: null
 })
 
 /* ------------- Selectors ------------- */
@@ -39,12 +43,20 @@ export const success = (state, action) => {
 };
 
 export const failure = (state) =>
-  state.merge({ fetching: false, error: true, categories: null })
+  state.merge({ fetching: false, error: true, categories: null });
+
+export const setCity = (state, { city }) => state.merge({ city });
+
+export const fetchRestaurants = (state, {}) => state.merge({ fetching: true, restaurants: null })
+export const fetchRestaurantsSuccess = (state, { restaurants }) => state.merge({ fetching: false, error: null, restaurants });
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.CATEGORY_FETCH_REQUEST]: request,
   [Types.CATEGORY_FETCH_SUCCESS]: success,
-  [Types.CATEGORY_FETCH_FAILURE]: failure
+  [Types.CATEGORY_FETCH_FAILURE]: failure,
+  [Types.SET_CITY]: setCity,
+  [Types.RESTAURANT_FETCH_REQUEST]: fetchRestaurants,
+  [Types.RESTAURANT_FETCH_SUCCESS]: fetchRestaurantsSuccess
 })
