@@ -4,7 +4,11 @@ import React, { Component } from 'react'
 import StorybookUI from "../../storybook/storybook";
 import LogoTitle from "../Components/LogoTitle";
 
-export default class StorybookContainer extends Component {
+type Props = {
+  navigation: Object
+}
+
+export default class StorybookContainer extends Component<Props> {
   static navigationOptions = {
     headerTitle: <LogoTitle />,
     headerMode: 'card'

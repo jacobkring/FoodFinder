@@ -1,31 +1,14 @@
 // @flow
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
 import styles from './Styles/StarRatingStyle'
-import ExamplesRegistry from '../Services/ExamplesRegistry'
-
-import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Note that this file (App/Components/RestaurantCard) needs to be
-// imported in your app somewhere, otherwise your component won't be
-// compiled and added to the examples dev screen.
+type Props = {
+  rating: number
+}
 
-// Ignore in coverage report
-/* istanbul ignore next */
-ExamplesRegistry.addComponentExample('Star Rating', () =>
-  <StarRating
-    rating={2.5}
-  />
-);
-
-
-export default class StarRating extends Component {
-  static propTypes = {
-    rating: PropTypes.number
-  };
-
+export default class StarRating extends Component<Props> {
   render () {
 
     const rating = Math.round(this.props.rating*2)/2;

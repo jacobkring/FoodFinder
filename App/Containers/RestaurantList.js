@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
@@ -12,7 +13,19 @@ import LogoTitle from "../Components/LogoTitle";
 import CitySelector from "../Components/CitySelector";
 import RestaurantCard from "../Components/RestaurantCard";
 
-class RestaurantList extends Component {
+type Props = {
+  navigation: Object,
+  city: string,
+  getRestaurants: Function,
+  setCity: Function,
+  restaurants: Object
+}
+
+type State = {
+  text: string
+}
+
+class RestaurantList extends Component<Props, State> {
   state = {
     text: ''
   };
@@ -51,7 +64,7 @@ class RestaurantList extends Component {
       <ScrollView style={styles.container}>
         <TextInput style={{ color: "rgb(227,93,93)", margin: 5 }} underlineColor="rgb(227,93,93)" label={'Search'} value={this.state.text} onChangeText={text => this.setState({ text })}/>
         { this.props.restaurants && this.props.restaurants.filter(restaurant => this.state.text.length > 1 ? restaurant.restaurant.name.toLowerCase().indexOf(this.state.text.toLowerCase()) !== -1 : true).map(restaurant => {
-          return <RestaurantCard key={restaurant.restaurant.deeplink} restaurant={restaurant} />
+          return <RestaurantCard onPress={() => this.props.navigation.navigate('RestaurantPage')} key={restaurant.restaurant.deeplink} restaurant={restaurant} />
         })}
       </ScrollView>
     )

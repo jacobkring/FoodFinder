@@ -7,7 +7,11 @@ import { Button } from 'react-native-paper';
 import styles from './Styles/LaunchScreenStyles'
 import LogoTitle from "./StorybookContainer";
 
-export default class LaunchScreen extends Component {
+type Props = {
+  navigation: Object
+}
+
+export default class LaunchScreen extends Component<Props> {
   static navigationOptions = {
     // headerTitle instead of title
     header: null

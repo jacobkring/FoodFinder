@@ -19,6 +19,9 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+[untyped]
+.*/node_modules/react-native-safe-area-view
+
 [include]
 
 [libs]
