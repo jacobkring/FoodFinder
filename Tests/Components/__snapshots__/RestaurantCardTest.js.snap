@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RestaurantCard component renders correctly 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "marginBottom": 10,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 4,
+        "elevation": 1,
+        "padding": 5,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 0.5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.24,
+        "shadowRadius": 0.75,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
+    >
+      <View
+        index={0}
+        siblings={
+          Array [
+            "View",
+            "Text",
+          ]
+        }
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+        total={2}
+      >
+        <Image
+          source={
+            Object {
+              "uri": "https://b.zmtcdn.com/data/res_imagery/16777320_RESTAURANT_5bc92fcf35438e2404eb918270b2ea2c.jpg",
+            }
+          }
+          style={
+            Object {
+              "height": 65,
+              "width": 65,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "marginLeft": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 16,
+              }
+            }
+          >
+            AWESOME RESTAURANT
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "margin": 0,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#ffd700",
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#ffd700",
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#ffd700",
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#ffd700",
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "rgb(215,215,215)",
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <Text
+              style={
+                Object {
+                  "color": "rgb(128,128,128)",
+                  "fontSize": 12,
+                }
+              }
+            >
+              Very Good
+               
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "rgb(128,128,128)",
+                  "fontSize": 12,
+                }
+              }
+            >
+              $$
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "rgb(128,128,128)",
+                "fontSize": 12,
+              }
+            }
+          >
+            BEST CUISINES
+          </Text>
+        </View>
+      </View>
+      <Text
+        index={1}
+        siblings={
+          Array [
+            "View",
+            "Text",
+          ]
+        }
+        style={
+          Object {
+            "color": "rgb(128,128,128)",
+            "fontSize": 12,
+          }
+        }
+        total={2}
+      >
+        TOP PLACE
+      </Text>
+    </View>
+  </View>
+</View>
+`;

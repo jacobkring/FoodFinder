@@ -40,7 +40,9 @@ class CategoryContainer extends Component {
       <ScrollView style={styles.container}>
         {categories && categories.map( category => {
           const { id, name } = category.categories;
-          return <CategoryCard key={id} onPress={() => this.props.navigation.navigate('RestaurantList', { category: name, id: id })} category={name} />
+          return <CategoryCard key={id} onPress={() => {
+            this.props.navigation.navigate('RestaurantList', { category: name })
+          }} category={name} />
         })}
 
       </ScrollView>

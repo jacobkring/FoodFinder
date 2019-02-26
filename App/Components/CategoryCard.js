@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native'
@@ -5,18 +6,12 @@ import styles from './Styles/CategoryCardStyle'
 
 import { Card, Title } from 'react-native-paper'
 
-export default class CategoryCard extends Component {
-  // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
-  //
-  // // Defaults for props
-  // static defaultProps = {
-  //   someSetting: false
-  // }
+type Props = {
+  onPress: Function,
+  category: string
+}
 
+export default class CategoryCard extends Component<Props> {
   render () {
     return (
       <TouchableOpacity onPress={this.props.onPress}>

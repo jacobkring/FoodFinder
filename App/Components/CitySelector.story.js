@@ -1,12 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import { View } from 'react-native'
 
 import CitySelector from './CitySelector'
 
-storiesOf('CitySelector')
+storiesOf('CitySelector', module)
   .add('Default', () => (
-    <CitySelector selectedCity={"New York"}/>
+    <CitySelector selectedCity={'New York'} />
   ))
-
-

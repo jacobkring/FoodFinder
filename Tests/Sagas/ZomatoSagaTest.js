@@ -1,7 +1,7 @@
 import FixtureAPI from '../../App/Services/FixtureApi'
 import { put, call } from 'redux-saga/effects'
-import { getUserAvatar } from '../../App/Sagas/GithubSagas'
-import GithubActions from '../../App/Redux/GithubRedux'
+import { getUserAvatar } from '../../App/Sagas/ZomatoSagas'
+import ZomatoActions from '../../App/Redux/ZomatoRedux'
 import { path } from 'ramda'
 
 const stepper = (fn) => (mock) => fn.next(mock).value
@@ -22,7 +22,7 @@ test('success path', () => {
   // Get the avatar Url from the response
   const firstUser = path(['data', 'items'], response)[0]
   const avatar = firstUser.avatar_url
-  expect(stepResponse).toEqual(put(GithubActions.userSuccess(avatar)))
+  expect(stepResponse).toEqual(put(ZomatoActions.userSuccess(avatar)))
 })
 
 test('failure path', () => {
@@ -31,5 +31,5 @@ test('failure path', () => {
   // first step API
   step()
   // Second step failed response
-  expect(step(response)).toEqual(put(GithubActions.userFailure()))
+  expect(step(response)).toEqual(put(ZomatoActions.userFailure()))
 })

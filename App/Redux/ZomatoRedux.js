@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
   categoryFetchSuccess: ['categories'],
   categoryFetchFailure: null,
   setCity: ['city'],
-  restaurantFetchRequest: ['city', 'category'],
+  restaurantFetchRequest: ['category'],
   restaurantFetchSuccess: ['restaurants']
 })
 
@@ -20,7 +20,7 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   fetching: null,
   categories: null,
-  city: "New York",
+  city: 'New York',
   category: null,
   restaurants: null
 })
@@ -28,8 +28,8 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Selectors ------------- */
 
 export const ZomatoSelectors = {
-  selectCity: state => state.Zomato.city,
-  selectCategory: state => state.Zomato.category
+  selectCity: state => state.zomato.city,
+  selectCategory: state => state.zomato.category
 }
 
 /* ------------- Reducers ------------- */
@@ -38,17 +38,17 @@ export const request = (state, {}) =>
   state.merge({ fetching: true, categories: null })
 
 export const success = (state, action) => {
-  const { categories } = action;
+  const { categories } = action
   return state.merge({ fetching: false, error: null, categories })
 };
 
 export const failure = (state) =>
-  state.merge({ fetching: false, error: true, categories: null });
+  state.merge({ fetching: false, error: true, categories: null })
 
-export const setCity = (state, { city }) => state.merge({ city });
+export const setCity = (state, { city }) => state.merge({ city })
 
-export const fetchRestaurants = (state, {}) => state.merge({ fetching: true, restaurants: null })
-export const fetchRestaurantsSuccess = (state, { restaurants }) => state.merge({ fetching: false, error: null, restaurants });
+export const fetchRestaurants = (state) => state.merge({ fetching: true, restaurants: null })
+export const fetchRestaurantsSuccess = (state, { restaurants }) => state.merge({ fetching: false, error: null, restaurants })
 
 /* ------------- Hookup Reducers To Types ------------- */
 

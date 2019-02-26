@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { View, Text, Image, TouchableOpacity} from 'react-native'
@@ -5,18 +6,17 @@ import styles from './Styles/CitySelectorStyle'
 
 import { Dropdown } from 'react-native-material-dropdown';
 
-export default class CitySelector extends Component {
-  state = {
-    visible: false,
-  };
+type Props = {
+  onCitySelected?: Function,
+  selectedCity?: string
+}
 
+export default class CitySelector extends Component<Props> {
   render () {
-    const { visible } = this.state;
-
     const cities = [
-      { value: 'New York'},
-      { value: 'Pittsburgh'}
-    ];
+      { value: 'New York' },
+      { value: 'Pittsburgh' }
+    ]
 
     return (
       <View style={styles.selectorStyle}>

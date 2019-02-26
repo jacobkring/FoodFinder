@@ -1,19 +1,15 @@
-import { takeLatest, all } from 'redux-saga/effects'
+import { takeLatest, takeEvery, take, all } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
 
-
 import { ZomatoTypes } from '../Redux/ZomatoRedux'
 
 /* ------------- Sagas ------------- */
 
-
-import { getRestaurantCategories } from './ZomatoSagas'
-import { setCity } from './ZomatoSagas'
-import { getRestaurants } from './ZomatoSagas'
+import { getRestaurantCategories, setCity, getRestaurants } from './ZomatoSagas'
 
 /* ------------- API ------------- */
 
@@ -26,7 +22,7 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 export default function * root () {
   yield all([
     takeLatest(ZomatoTypes.CATEGORY_FETCH_REQUEST, getRestaurantCategories, api),
-    takeLatest(ZomatoTypes.SET_CITY, setCity),
+    take(ZomatoTypes.SET_CITY, setCity),
     takeLatest(ZomatoTypes.RESTAURANT_FETCH_REQUEST, getRestaurants, api)
   ])
 }
